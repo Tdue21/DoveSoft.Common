@@ -1,0 +1,511 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DoveSoft.Common</name>
+    </assembly>
+    <members>
+        <member name="M:DoveSoft.Common.Data.AbstractEntity.#ctor">
+            <summary>Default constructor. Protected due to being abstract. </summary>
+        </member>
+        <member name="M:DoveSoft.Common.Data.AbstractEntity.#ctor(System.Guid)">
+            <summary>Protected constructor with required data.</summary>
+            <param name="id">Id of entity.</param>
+        </member>
+        <member name="P:DoveSoft.Common.Data.AbstractEntity.Id">
+            <summary>Id of entity. Identity field and required.</summary>
+        </member>
+        <member name="P:DoveSoft.Common.Data.AbstractEntity.Created">
+            <summary>Timestamp for creation of entity.</summary>
+        </member>
+        <member name="P:DoveSoft.Common.Data.AbstractEntity.Updated">
+            <summary>Timestamp for last update of entity.</summary>
+        </member>
+        <member name="M:DoveSoft.Common.Data.AbstractEntity.Init">
+            <summary>
+            Used for initiating an inheriting entity.
+            </summary>
+        </member>
+        <member name="T:DoveSoft.Common.Data.EntityRepository`2">
+            <summary>
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TDbContext"></typeparam>
+            <seealso cref="T:DoveSoft.Common.Data.IRepository`1" />
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityRepository`2.#ctor(DoveSoft.Common.Data.IUnitOfWork)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DoveSoft.Common.Data.EntityRepository`2" /> class.
+            </summary>
+            <param name="unitOfWork">The unit of work.</param>
+            <exception cref="T:System.ArgumentNullException">unitOfWork</exception>
+        </member>
+        <member name="P:DoveSoft.Common.Data.EntityRepository`2.Context">
+            <summary>
+                Gets the context.
+            </summary>
+            <value>
+                The context.
+            </value>
+        </member>
+        <member name="P:DoveSoft.Common.Data.EntityRepository`2.Set">
+            <summary>
+                Gets the set.
+            </summary>
+            <value>
+                The set.
+            </value>
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityRepository`2.Insert(`1)">
+            <summary>
+                Inserts the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityRepository`2.InsertAsync(`1,System.Threading.CancellationToken)">
+            <summary>
+                Inserts the asynchronous.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityRepository`2.Update(`1)">
+            <summary>
+                Updates the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityRepository`2.Delete(`1)">
+            <summary>
+                Deletes the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityRepository`2.Find(System.Object[])">
+            <summary>
+                Finds the specified keys.
+            </summary>
+            <param name="keys">The keys.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityRepository`2.FindAsync(System.Object[],System.Threading.CancellationToken)">
+            <summary>
+                Finds the asynchronous.
+            </summary>
+            <param name="keys">The keys.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="P:DoveSoft.Common.Data.EntityRepository`2.Query">
+            <summary>
+                Gets the query.
+            </summary>
+            <value>
+                The query.
+            </value>
+        </member>
+        <member name="T:DoveSoft.Common.Data.EntityUnitOfWork`1">
+            <summary>
+                Entity Framework Core specific <see cref="T:DoveSoft.Common.Data.IUnitOfWork" /> implementation.
+            </summary>
+            <seealso cref="T:DoveSoft.Common.Data.IUnitOfWork" />
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityUnitOfWork`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:DoveSoft.Common.Data.EntityUnitOfWork`1" /> class.
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityUnitOfWork`1.#ctor(`0)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DoveSoft.Common.Data.EntityUnitOfWork`1" /> class.
+            </summary>
+            <param name="context">The context.</param>
+            <exception cref="T:System.ArgumentNullException">context</exception>
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityUnitOfWork`1.GetRepository``1">
+            <summary>
+                Gets the <see cref="T:DoveSoft.Common.Data.IRepository`1" /> repository for the type supplied.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityUnitOfWork`1.SaveChanges">
+            <summary>
+                Saves the changes.
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.ObjectDisposedException">Unit of Work has been disposed.</exception>
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityUnitOfWork`1.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+                Saves the changes asynchronous.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+            <exception cref="T:System.ObjectDisposedException">Unit of Work has been disposed.</exception>
+        </member>
+        <member name="M:DoveSoft.Common.Data.EntityUnitOfWork`1.GetContext">
+            <summary>
+                Returns the current DbContext object.
+            </summary>
+            <typeparam name="TDbContext">The type of the database context.</typeparam>
+            <returns></returns>
+            <exception cref="T:System.ObjectDisposedException">Unit of Work has been disposed.</exception>
+        </member>
+        <member name="T:DoveSoft.Common.Data.IRepository`1">
+            <summary>
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="P:DoveSoft.Common.Data.IRepository`1.Query">
+            <summary>
+                Gets the query.
+            </summary>
+            <value>
+                The query.
+            </value>
+        </member>
+        <member name="M:DoveSoft.Common.Data.IRepository`1.Insert(`0)">
+            <summary>
+                Inserts the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.IRepository`1.InsertAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+                Inserts the asynchronous.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Data.IRepository`1.Update(`0)">
+            <summary>
+                Updates the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.IRepository`1.Delete(`0)">
+            <summary>
+                Deletes the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.IRepository`1.Find(System.Object[])">
+            <summary>
+                Finds the specified keys.
+            </summary>
+            <param name="keys">The keys.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Data.IRepository`1.FindAsync(System.Object[],System.Threading.CancellationToken)">
+            <summary>
+                Finds the asynchronous.
+            </summary>
+            <param name="keys">The keys.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:DoveSoft.Common.Data.IUnitOfWork">
+            <summary>
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="M:DoveSoft.Common.Data.IUnitOfWork.SaveChanges">
+            <summary>
+                Saves the changes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Data.IUnitOfWork.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+                Saves the changes asynchronous.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Data.IUnitOfWork.GetRepository``1">
+            <summary>
+                Gets the repository.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:DoveSoft.Common.Data.IUnitOfWorkFactory">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.Data.IUnitOfWorkFactory.Create">
+            <summary>
+                Creates an instance of <see cref="T:DoveSoft.Common.Data.IUnitOfWork" />.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DoveSoft.Common.Data.RulesService">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.Data.RulesService.AddInsertRule(System.Action{System.Object})">
+            <summary>
+            </summary>
+            <param name="insertRule"></param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.RulesService.AddUpdateRule(System.Action{System.Object})">
+            <summary>
+            </summary>
+            <param name="updateRule"></param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.RulesService.AddDeleteRule(System.Action{System.Object})">
+            <summary>
+            </summary>
+            <param name="deleteRule"></param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.RulesService.AddInsertRule``1(System.Action{``0})">
+            <summary>
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="insertRule"></param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.RulesService.AddUpdateRule``1(System.Action{``0})">
+            <summary>
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="updateRule"></param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.RulesService.AddDeleteRule``1(System.Action{``0})">
+            <summary>
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="deleteRule"></param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.RulesService.ApplyInsertRules(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            </summary>
+            <param name="inserting"></param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.RulesService.ApplyUpdateRules(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            </summary>
+            <param name="updating"></param>
+        </member>
+        <member name="M:DoveSoft.Common.Data.RulesService.ApplyDeleteRules(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            </summary>
+            <param name="deleting"></param>
+        </member>
+        <member name="T:DoveSoft.Common.Data.UnitOfWorkFactory">
+            <summary>
+            </summary>
+            <seealso cref="T:DoveSoft.Common.Data.IUnitOfWorkFactory" />
+        </member>
+        <member name="M:DoveSoft.Common.Data.UnitOfWorkFactory.Create">
+            <summary>
+                Creates an instance of <see cref="T:DoveSoft.Common.Data.IUnitOfWork" />
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DoveSoft.Common.Disposable">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:DoveSoft.Common.IDisposing" />
+        </member>
+        <member name="M:DoveSoft.Common.Disposable.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="E:DoveSoft.Common.Disposable.Disposing">
+            <summary>
+            Occurs when the object is disposing.
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.Disposable.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:DoveSoft.Common.EncryptionHelper">
+            <summary>A static helper class for encrypting and decrypt text strings. </summary>
+        </member>
+        <member name="F:DoveSoft.Common.EncryptionHelper.RgbIv">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:DoveSoft.Common.EncryptionHelper.RgbKey">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.EncryptionHelper.Decrypt(System.String)">
+            <summary>Decrypts the specified <paramref name="password"/>.</summary>
+            <param name="password">The password.</param>
+            <exception cref="T:System.ArgumentNullException">password</exception>
+        </member>
+        <member name="M:DoveSoft.Common.EncryptionHelper.Encrypt(System.String)">
+            <summary>Encrypts the specified <paramref name="password"/>.</summary>
+            <param name="password">The password.</param>
+            <exception cref="T:System.ArgumentNullException">password</exception>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.DateTimeExtensions.StartOfMonth(System.DateTime)">
+            <summary>
+            Extension method that calculates the start of the month from the current <see cref="T:System.DateTime"/>.
+            </summary>
+            <param name="dateTime">The current <see cref="T:System.DateTime"/>.</param>
+            <returns>A DateTime representing the start of the month.</returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.DateTimeExtensions.EndOfMonth(System.DateTime)">
+            <summary>
+            Extension method that calculates the end of the month from the current <see cref="T:System.DateTime"/>.
+            </summary>
+            <param name="dateTime">The current <see cref="T:System.DateTime"/>.</param>
+            <returns>A DateTime representing the end of the month.</returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.DateTimeExtensions.StartOfYear(System.DateTime)">
+            <summary>
+            Extension method that calculates the start of the year from the current <see cref="T:System.DateTime"/>.
+            </summary>
+            <param name="dateTime">The current <see cref="T:System.DateTime"/>.</param>
+            <returns>A DateTime representing the start of the year.</returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.DateTimeExtensions.EndOfYear(System.DateTime)">
+            <summary>
+            Extension method that calculates the end of the year from the current <see cref="T:System.DateTime"/>.
+            </summary>
+            <param name="dateTime">The current <see cref="T:System.DateTime"/>.</param>
+            <returns>A DateTime representing the end of the year.</returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.DbContextExtensions.Changes(Microsoft.EntityFrameworkCore.DbContext,Microsoft.EntityFrameworkCore.EntityState)">
+            <summary>
+            Returns an <see cref="T:System.Collections.Generic.IEnumerable`1"/> list of objects of the supplied <see cref="T:Microsoft.EntityFrameworkCore.EntityState"/>.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/> to extract changes from.</param>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.DbContextExtensions.SaveAndDetachAllEntities(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            Saves and then detaches all entities from the <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/>.
+            </summary>
+            <param name="context">The context.</param>
+            <exception cref="T:System.ArgumentNullException">context</exception>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.ServiceCollectionExtensions.AddSerilogServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{Serilog.LoggerConfiguration,Serilog.LoggerConfiguration})">
+            <summary>
+            Adds the serilog services.
+            </summary>
+            <param name="services">The services.</param>
+            <param name="configuration">The configuration.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.ServiceCollectionExtensions.AddDataDependencyInjection``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the data dependency injection.
+            </summary>
+            <typeparam name="TDbContext">The type of the database context.</typeparam>
+            <param name="collection">The collection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.ServiceCollectionExtensions.AddDependencyInjection(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{System.Collections.Generic.Dictionary{System.Type,System.Type}})">
+            <summary>
+            Adds the dependency injection.
+            </summary>
+            <param name="collection">The collection.</param>
+            <param name="mappingCollection">The mapping collection.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">collection</exception>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.ServiceProviderExtensions.GetService``1(System.IServiceProvider)">
+            <summary>
+            Gets the service.
+            </summary>
+            <typeparam name="TType">The type of the type.</typeparam>
+            <param name="serviceProvider">The service provider.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">serviceProvider</exception>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.StreamExtensions.ReadAsBytes(System.IO.Stream)">
+            <summary>
+            Reads as bytes.
+            </summary>
+            <param name="input">The input.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.StringExtensions.ToSecureString(System.String)">
+            <summary>
+            Converts a normal <see cref="T:System.String" /> to a <see cref="T:System.Security.SecureString"/>.
+            </summary>
+            <param name="unsafeString">A string value.</param>
+            <returns>A SecureString value.</returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.StringExtensions.FromSecureString(System.Security.SecureString)">
+            <summary>
+            Converts a <see cref="T:System.Security.SecureString"/> to a normal <see cref="T:System.String" />.
+            </summary>
+            <param name="secureString">A SecureString value.</param>
+            <returns>An insecure string value.</returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.StringExtensions.ToSafeString(System.String)">
+            <summary>
+            Escapes both single- and double-quotes in a <see cref="T:System.String"/>.
+            </summary>
+            <param name="input">Unescaped string.</param>
+            <returns>String with escaped quotes.</returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.StringExtensions.AppendDivider(System.Text.StringBuilder,System.Char,System.Int32)">
+            <summary>
+            Appends a divider <see cref="T:System.String"/> to a StringBuilder. The divider is default a 50 characters long string of dashes.
+            </summary>
+            <param name="builder">The <see cref="T:System.Text.StringBuilder"/> object.</param>
+            <param name="divider">The <see cref="T:System.Char"/> value to use as a divider.</param>
+            <param name="length">The length of the divider string.</param>
+            <returns>A string consisting of the divider character. Default: 50 dashes.</returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.TypeExtensions.GetFirstAttribute``2(``0)">
+            <summary>
+            Gets the first attribute.
+            </summary>
+            <typeparam name="TEnum">The type of the enum.</typeparam>
+            <typeparam name="TAttribute">The type of the attribute.</typeparam>
+            <param name="enumValue">The enum value.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.TypeExtensions.GetDescription``1(``0)">
+            <summary>
+            Gets the description.
+            </summary>
+            <typeparam name="TEnum">The type of the enum.</typeparam>
+            <param name="enumValue">The enum value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.Extensions.TypeExtensions.GetAttribute``1(System.Reflection.MemberInfo)">
+            <summary>
+            Gets the attribute.
+            </summary>
+            <typeparam name="TAttr">The type of the attribute.</typeparam>
+            <param name="propInfo">The property information.</param>
+            <returns></returns>
+        </member>
+        <member name="T:DoveSoft.Common.IDisposing">
+            <summary>
+            Inherits from <see cref="T:System.IDisposable"/> and adds an event for callers to react to.
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="E:DoveSoft.Common.IDisposing.Disposing">
+            <summary>
+            Occurs when the object is disposing.
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.JsonEncryptionConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="M:DoveSoft.Common.JsonEncryptionConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="M:DoveSoft.Common.JsonEncryptionConverter.CanConvert(System.Type)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

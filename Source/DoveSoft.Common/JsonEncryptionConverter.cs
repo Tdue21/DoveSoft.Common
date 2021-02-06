@@ -28,26 +28,24 @@ namespace DoveSoft.Common
 {
 	public class JsonEncryptionConverter : JsonConverter
 	{
+		/// <inheritdoc />
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
 		{
-			if (!(value is string clearValue))
+			if (value is string clearValue)
 			{
-				clearValue = string.Empty;
+				var encrypt = EncryptionHelper.Encrypt(clearValue);
+				writer.WriteValue(encrypt);
 			}
-
-			var encrypt = EncryptionHelper.Encrypt(clearValue);
-			writer.WriteValue(encrypt);
 		}
 
+		/// <inheritdoc />
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
 			var value = reader.Value as string;
 			return string.IsNullOrEmpty(value) ? reader.Value : EncryptionHelper.Decrypt(value);
 		}
 
-		public override bool CanConvert(Type objectType)
-		{
-			return objectType == typeof(string);
-		}
+		/// <inheritdoc />
+		public override bool CanConvert(Type objectType) => objectType == typeof(string);
 	}
 }

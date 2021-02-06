@@ -28,7 +28,7 @@ using System.Security.Cryptography;
 namespace DoveSoft.Common
 {
 	/// <summary>A static helper class for encrypting and decrypt text strings. </summary>
-	internal static class EncryptionHelper
+	public static class EncryptionHelper
 	{
 		/// <summary>
 		/// </summary>
@@ -48,7 +48,7 @@ namespace DoveSoft.Common
 		/// <summary>Decrypts the specified <paramref name="password"/>.</summary>
 		/// <param name="password">The password.</param>
 		/// <exception cref="ArgumentNullException">password</exception>
-		internal static string Decrypt(string password)
+		public static string Decrypt(string password)
 		{
 			if (password == null)
 			{
@@ -57,28 +57,19 @@ namespace DoveSoft.Common
 
 			var cipherBytes = Convert.FromBase64String(password);
 
-			using (var alg = new RijndaelManaged())
-			{
-				using (var decrypt = alg.CreateDecryptor(RgbKey, RgbIv))
-				{
-					using (var ms = new MemoryStream(cipherBytes))
-					{
-						using (var cs = new CryptoStream(ms, decrypt, CryptoStreamMode.Read))
-						{
-							using (var reader = new StreamReader(cs))
-							{
-								return reader.ReadToEnd();
-							}
-						}
-					}
-				}
-			}
+			using var alg = new RijndaelManaged();
+			using var decrypt = alg.CreateDecryptor(RgbKey, RgbIv);
+			using var ms = new MemoryStream(cipherBytes);
+			using var cs = new CryptoStream(ms, decrypt, CryptoStreamMode.Read);
+			using var reader = new StreamReader(cs);
+			
+			return reader.ReadToEnd();
 		}
 
 		/// <summary>Encrypts the specified <paramref name="password"/>.</summary>
 		/// <param name="password">The password.</param>
 		/// <exception cref="ArgumentNullException">password</exception>
-		internal static string Encrypt(string password)
+		public static string Encrypt(string password)
 		{
 			if (password == null)
 			{
@@ -87,31 +78,26 @@ namespace DoveSoft.Common
 
 			byte[] encrypted;
 
-			using (RijndaelManaged rijAlg = new RijndaelManaged())
+			using (var rijAlg = new RijndaelManaged())
 			{
 				rijAlg.Key = RgbKey;
 				rijAlg.IV = RgbIv;
 
-				ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
+				var encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
 
-				using (MemoryStream msEncrypt = new MemoryStream())
-				{
-					using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-					{
-						using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-						{
-							swEncrypt.Write(password);
-						}
-						encrypted = msEncrypt.ToArray();
-					}
-				}
+				using var msEncrypt = new MemoryStream();
+				using var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
+				using var swEncrypt = new StreamWriter(csEncrypt);
+				
+				swEncrypt.Write(password);
+				encrypted = msEncrypt.ToArray();
 			}
 
 			return Convert.ToBase64String(encrypted);
 		}
 
-
-		static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
+/*
+		private static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
 		{
 			// Check arguments.
 			if (plainText == null || plainText.Length <= 0)
@@ -201,5 +187,6 @@ namespace DoveSoft.Common
 
 			return plaintext;
 		}
+*/
 	}
 }

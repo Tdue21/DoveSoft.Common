@@ -21,14 +21,30 @@
 // * IN THE SOFTWARE.
 // ****************************************************************************
 
-using System.Text;
+using System.IO;
 
 namespace DoveSoft.Common.Extensions
 {
-	public static class VariousExtensionMethods
+	public static class StreamExtensions
 	{
-		public static string ToSafeString(this string input) => $"'{input.Replace("'", "''")}'";
+		/// <summary>
+		/// Reads as bytes.
+		/// </summary>
+		/// <param name="input">The input.</param>
+		/// <returns></returns>
+		public static byte[] ReadAsBytes(this Stream input)
+		{
+			var buffer = new byte[16 * 1024];
 
-		public static StringBuilder AppendDivider(this StringBuilder builder, int length = 50) => builder.AppendLine("".PadRight(length, '-'));
+			using var ms = new MemoryStream();
+			int read;
+
+			while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+			{
+				ms.Write(buffer, 0, read);
+			}
+
+			return ms.ToArray();
+		}
 	}
 }

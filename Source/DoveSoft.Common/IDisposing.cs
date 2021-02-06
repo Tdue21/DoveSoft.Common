@@ -25,8 +25,15 @@ using System;
 
 namespace DoveSoft.Common
 {
+	/// <summary>
+	/// Inherits from <see cref="System.IDisposable"/> and adds an event for callers to react to.
+	/// </summary>
+	/// <seealso cref="System.IDisposable" />
 	public interface IDisposing : IDisposable
 	{
+		/// <summary>
+		/// Occurs when the object is disposing.
+		/// </summary>
 		event EventHandler Disposing;
 	}
 }

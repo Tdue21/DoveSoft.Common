@@ -32,6 +32,12 @@ namespace DoveSoft.Common.Extensions
 {
 	public static class ServiceCollectionExtensions
 	{
+		/// <summary>
+		/// Adds the serilog services.
+		/// </summary>
+		/// <param name="services">The services.</param>
+		/// <param name="configuration">The configuration.</param>
+		/// <returns></returns>
 		public static IServiceCollection AddSerilogServices(this IServiceCollection services, Func<LoggerConfiguration, LoggerConfiguration> configuration)
 		{
 			Log.Logger = configuration.Invoke(new LoggerConfiguration())
@@ -43,6 +49,12 @@ namespace DoveSoft.Common.Extensions
 		}
 
 
+		/// <summary>
+		/// Adds the data dependency injection.
+		/// </summary>
+		/// <typeparam name="TDbContext">The type of the database context.</typeparam>
+		/// <param name="collection">The collection.</param>
+		/// <returns></returns>
 		public static IServiceCollection AddDataDependencyInjection<TDbContext>(this IServiceCollection collection)
 			where TDbContext : DbContext
 		{
@@ -52,6 +64,13 @@ namespace DoveSoft.Common.Extensions
 			return collection;
 		}
 
+		/// <summary>
+		/// Adds the dependency injection.
+		/// </summary>
+		/// <param name="collection">The collection.</param>
+		/// <param name="mappingCollection">The mapping collection.</param>
+		/// <returns></returns>
+		/// <exception cref="System.ArgumentNullException">collection</exception>
 		public static IServiceCollection AddDependencyInjection(this IServiceCollection collection, Action<Dictionary<Type, Type>> mappingCollection)
 		{
 			if (collection == null) throw new ArgumentNullException(nameof(collection));
