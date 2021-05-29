@@ -1,6 +1,6 @@
 ﻿// ****************************************************************************
 // * The MIT License(MIT)
-// * Copyright © 2020 Thomas Due
+// * Copyright © 2021 DoveSoft
 // *
 // * Permission is hereby granted, free of charge, to any person obtaining a
 // * copy of this software and associated documentation files (the “Software”),
@@ -29,8 +29,10 @@ namespace DoveSoft.Common.Extensions
 	{
 		public static TType GetService<TType>(this IServiceProvider serviceProvider)
 		{
-			if (serviceProvider == null) throw new ArgumentNullException(nameof(serviceProvider));
-
+			if (serviceProvider == null)
+			{
+				throw new ArgumentNullException(nameof(serviceProvider));
+			}
 			return (TType) serviceProvider.GetService(typeof(TType));
 		}
 	}

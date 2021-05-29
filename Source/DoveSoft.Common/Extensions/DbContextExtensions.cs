@@ -1,6 +1,6 @@
 ﻿// ****************************************************************************
 // * The MIT License(MIT)
-// * Copyright © 2020 Thomas Due
+// * Copyright © 2021 DoveSoft
 // *
 // * Permission is hereby granted, free of charge, to any person obtaining a
 // * copy of this software and associated documentation files (the “Software”),
@@ -33,7 +33,10 @@ namespace DoveSoft.Common.Extensions
 	{
 		public static IEnumerable<object> Changes(this DbContext context, EntityState state)
 		{
-			if (context == null) throw new ArgumentNullException(nameof(context));
+			if (context == null)
+			{
+				throw new ArgumentNullException(nameof(context));
+			}
 
 			return context.ChangeTracker
 				.Entries()
@@ -43,7 +46,10 @@ namespace DoveSoft.Common.Extensions
 
 		public static async Task SaveAndDetachAllEntities(this DbContext context)
 		{
-			if (context == null) throw new ArgumentNullException(nameof(context));
+			if (context == null)
+			{
+				throw new ArgumentNullException(nameof(context));
+			}
 
 			await context.SaveChangesAsync();
 

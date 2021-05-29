@@ -1,6 +1,6 @@
 ﻿// ****************************************************************************
 // * The MIT License(MIT)
-// * Copyright © 2021 Thomas Due
+// * Copyright © 2021 DoveSoft
 // *
 // * Permission is hereby granted, free of charge, to any person obtaining a
 // * copy of this software and associated documentation files (the “Software”),
@@ -27,8 +27,10 @@ namespace DoveSoft.Common.Extensions
 {
 	public static class VariousExtensionMethods
 	{
-		public static string ToSafeString(this string input) => $"'{input.Replace("'", "''")}'";
+		public static string ToSafeString(this string input) 
+			=> $"'{input.Replace("'", "''")}'";
 
-		public static StringBuilder AppendDivider(this StringBuilder builder, int length = 50) => builder.AppendLine("".PadRight(length, '-'));
+		public static StringBuilder AppendDivider(this StringBuilder builder, int length = 50) 
+			=> builder.AppendLine("".PadRight(length, '-'));
 	}
 }

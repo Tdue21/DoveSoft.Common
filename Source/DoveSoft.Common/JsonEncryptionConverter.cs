@@ -1,6 +1,6 @@
 ﻿// ****************************************************************************
 // * The MIT License(MIT)
-// * Copyright © 2020 Thomas Due
+// * Copyright © 2021 DoveSoft
 // *
 // * Permission is hereby granted, free of charge, to any person obtaining a
 // * copy of this software and associated documentation files (the “Software”),
@@ -30,7 +30,7 @@ namespace DoveSoft.Common
 	{
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
 		{
-			if (!(value is string clearValue))
+			if (value is not string clearValue)
 			{
 				clearValue = string.Empty;
 			}

@@ -1,20 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Thomas Due</Authors>
     <Product>DoveSoft Common Utilities</Product>
     <Description>A small library containing commonly used classes and extension methods.</Description>
     <Copyright>Copyright (c) 2020 by Thomas Due</Copyright>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.9" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Serilog" Version="2.10.0" />
   </ItemGroup>
 

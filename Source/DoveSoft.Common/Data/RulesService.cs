@@ -1,6 +1,6 @@
 ﻿// ****************************************************************************
 // * The MIT License(MIT)
-// * Copyright © 2020 Thomas Due
+// * Copyright © 2021 DoveSoft
 // *
 // * Permission is hereby granted, free of charge, to any person obtaining a
 // * copy of this software and associated documentation files (the “Software”),
@@ -30,6 +30,10 @@ namespace DoveSoft.Common.Data
 	/// </summary>
 	public static class RulesService
 	{
+		private static readonly List<Action<object>> InsertRules = new();
+		private static readonly List<Action<object>> UpdateRules = new();
+		private static readonly List<Action<object>> DeleteRules = new();
+
 		/// <summary>
 		/// </summary>
 		/// <param name="insertRule"></param>
@@ -62,7 +66,10 @@ namespace DoveSoft.Common.Data
 		{
 			InsertRules.Add(x =>
 			{
-				if (x is TEntity entity) insertRule(entity);
+				if (x is TEntity entity)
+				{
+					insertRule(entity);
+				}
 			});
 		}
 
@@ -74,7 +81,10 @@ namespace DoveSoft.Common.Data
 		{
 			UpdateRules.Add(x =>
 			{
-				if (x is TEntity entity) updateRule(entity);
+				if (x is TEntity entity)
+				{
+					updateRule(entity);
+				}
 			});
 		}
 
@@ -86,7 +96,10 @@ namespace DoveSoft.Common.Data
 		{
 			DeleteRules.Add(x =>
 			{
-				if (x is TEntity entity) deleteRule(entity);
+				if (x is TEntity entity)
+				{
+					deleteRule(entity);
+				}
 			});
 		}
 
@@ -96,8 +109,12 @@ namespace DoveSoft.Common.Data
 		public static void ApplyInsertRules(IEnumerable<object> inserting)
 		{
 			foreach (var entity in inserting)
-			foreach (var rule in InsertRules)
-				rule(entity);
+			{
+				foreach (var rule in InsertRules)
+				{
+					rule(entity);
+				}
+			}
 		}
 
 		/// <summary>
@@ -106,8 +123,12 @@ namespace DoveSoft.Common.Data
 		public static void ApplyUpdateRules(IEnumerable<object> updating)
 		{
 			foreach (var entity in updating)
-			foreach (var rule in UpdateRules)
-				rule(entity);
+			{
+				foreach (var rule in UpdateRules)
+				{
+					rule(entity);
+				}
+			}
 		}
 
 		/// <summary>
@@ -116,13 +137,12 @@ namespace DoveSoft.Common.Data
 		public static void ApplyDeleteRules(IEnumerable<object> deleting)
 		{
 			foreach (var entity in deleting)
-			foreach (var rule in DeleteRules)
-				rule(entity);
+			{
+				foreach (var rule in DeleteRules)
+				{
+					rule(entity);
+				}
+			}
 		}
-#pragma warning disable IDE1006 // Naming Styles				
-		private static readonly List<Action<object>> InsertRules = new List<Action<object>>();
-		private static readonly List<Action<object>> UpdateRules = new List<Action<object>>();
-		private static readonly List<Action<object>> DeleteRules = new List<Action<object>>();
-#pragma warning restore IDE1006 // Naming Styles
 	}
 }

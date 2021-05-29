@@ -1,6 +1,6 @@
 ﻿// ****************************************************************************
 // * The MIT License(MIT)
-// * Copyright © 2020 Thomas Due
+// * Copyright © 2021 DoveSoft
 // *
 // * Permission is hereby granted, free of charge, to any person obtaining a
 // * copy of this software and associated documentation files (the “Software”),
@@ -27,9 +27,6 @@ using System.Threading.Tasks;
 using DoveSoft.Common.Extensions;
 using Microsoft.EntityFrameworkCore;
 
-#pragma warning disable 414
-// ReSharper disable NotAccessedField.Local
-
 namespace DoveSoft.Common.Data
 {
 	/// <summary>
@@ -39,7 +36,7 @@ namespace DoveSoft.Common.Data
 	public class EntityUnitOfWork<TDbContext> : /*Disposable, */ IUnitOfWork where TDbContext : DbContext
 	{
 		private readonly TDbContext _context;
-		private readonly bool _ownContext;
+		//private readonly bool _ownContext;
 
 		/// <summary>
 		///     Initializes a new instance of the <see cref="EntityUnitOfWork{TDbContext}" /> class.
@@ -47,7 +44,7 @@ namespace DoveSoft.Common.Data
 		public EntityUnitOfWork()
 		{
 			_context = Activator.CreateInstance<TDbContext>();
-			_ownContext = true;
+			//_ownContext = true;
 		}
 
 		/// <summary>
@@ -58,7 +55,7 @@ namespace DoveSoft.Common.Data
 		public EntityUnitOfWork(TDbContext context)
 		{
 			_context = context ?? throw new ArgumentNullException(nameof(context));
-			_ownContext = false;
+			//_ownContext = false;
 		}
 
 		// <summary>
@@ -91,7 +88,10 @@ namespace DoveSoft.Common.Data
 			//	throw new ObjectDisposedException("Unit of Work has been disposed.");
 			//}
 
-			if (_context == null) throw new NullReferenceException("DbContext has not been set.");
+			if (_context == null)
+			{
+				throw new NullReferenceException("DbContext has not been set.");
+			}
 
 			RulesService.ApplyInsertRules(_context.Changes(EntityState.Added));
 			RulesService.ApplyDeleteRules(_context.Changes(EntityState.Modified));
@@ -113,7 +113,10 @@ namespace DoveSoft.Common.Data
 			//	throw new ObjectDisposedException("Unit of Work has been disposed.");
 			//}
 
-			if (_context == null) throw new NullReferenceException("DbContext has not been set.");
+			if (_context == null)
+			{
+				throw new NullReferenceException("DbContext has not been set.");
+			}
 
 			RulesService.ApplyInsertRules(_context.Changes(EntityState.Added));
 			RulesService.ApplyDeleteRules(_context.Changes(EntityState.Modified));

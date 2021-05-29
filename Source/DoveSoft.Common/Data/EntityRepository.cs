@@ -1,6 +1,6 @@
 ﻿// ****************************************************************************
 // * The MIT License(MIT)
-// * Copyright © 2020 Thomas Due
+// * Copyright © 2021 DoveSoft
 // *
 // * Permission is hereby granted, free of charge, to any person obtaining a
 // * copy of this software and associated documentation files (the “Software”),
@@ -57,8 +57,7 @@ namespace DoveSoft.Common.Data
 		/// <value>
 		///     The context.
 		/// </value>
-		private TDbContext Context =>
-			_context ??= ((EntityUnitOfWork<TDbContext>) _unitOfWork).GetContext();
+		private TDbContext Context => _context ??= ((EntityUnitOfWork<TDbContext>) _unitOfWork).GetContext();
 
 		/// <summary>
 		///     Gets the set.
@@ -75,7 +74,10 @@ namespace DoveSoft.Common.Data
 		public void Insert(TEntity entity)
 		{
 			var entry = Context.Entry(entity);
-			if (entry.State == EntityState.Detached) Set.Add(entity);
+			if (entry.State == EntityState.Detached)
+			{
+				Set.Add(entity);
+			}
 		}
 
 		/// <summary>
@@ -87,7 +89,10 @@ namespace DoveSoft.Common.Data
 		public async Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default)
 		{
 			var entry = Context.Entry(entity);
-			if (entry.State == EntityState.Detached) await Set.AddAsync(entity, cancellationToken);
+			if (entry.State == EntityState.Detached)
+			{
+				await Set.AddAsync(entity, cancellationToken);
+			}
 		}
 
 		/// <summary>
@@ -97,7 +102,10 @@ namespace DoveSoft.Common.Data
 		public void Update(TEntity entity)
 		{
 			var entry = Context.Entry(entity);
-			if (entry.State == EntityState.Detached) Set.Attach(entity);
+			if (entry.State == EntityState.Detached)
+			{
+				Set.Attach(entity);
+			}
 
 			entry.State = EntityState.Modified;
 		}
@@ -109,7 +117,10 @@ namespace DoveSoft.Common.Data
 		public void Delete(TEntity entity)
 		{
 			var entry = Context.Entry(entity);
-			if (entry.State == EntityState.Detached) Set.Attach(entity);
+			if (entry.State == EntityState.Detached)
+			{
+				Set.Attach(entity);
+			}
 
 			Set.Remove(entity);
 		}
