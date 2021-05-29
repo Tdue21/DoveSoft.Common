@@ -24,6 +24,7 @@
 namespace DoveSoft.Common.Data
 {
 	/// <summary>
+	/// Interface for a <see cref="IUnitOfWork"/> factory.
 	/// </summary>
 	public interface IUnitOfWorkFactory
 	{

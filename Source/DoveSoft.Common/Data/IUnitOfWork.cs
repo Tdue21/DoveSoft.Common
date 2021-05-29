@@ -29,7 +29,7 @@ namespace DoveSoft.Common.Data
 	/// <summary>
 	/// </summary>
 	/// <seealso cref="System.IDisposable" />
-	public interface IUnitOfWork //: IDisposing
+	public interface IUnitOfWork : IDisposing
 	{
 		/// <summary>
 		///     Saves the changes.

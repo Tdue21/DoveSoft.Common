@@ -24,19 +24,21 @@
 using System;
 using Microsoft.Extensions.DependencyInjection;
 
-// ReSharper disable UnusedMember.Global
-// ReSharper disable EmptyConstructor
-
 namespace DoveSoft.Common.Data
 {
 	/// <summary>
+	/// Implementation of the <see cref="IUnitOfWorkFactory"/> interface.
 	/// </summary>
 	/// <seealso cref="IUnitOfWorkFactory" />
 	public class UnitOfWorkFactory : IUnitOfWorkFactory
 	{
 		private readonly IServiceProvider _serviceProvider;
-		//private IUnitOfWork _unitOfWork;
+		private IUnitOfWork _unitOfWork;
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="serviceProvider"></param>
 		public UnitOfWorkFactory(IServiceProvider serviceProvider)
 		{
 			_serviceProvider = serviceProvider;
@@ -48,27 +50,32 @@ namespace DoveSoft.Common.Data
 		/// <returns></returns>
 		public IUnitOfWork Create()
 		{
-			//if (_unitOfWork == null)
-			//{
-			//	_unitOfWork = _serviceProvider.GetRequiredService<IUnitOfWork>();
-			//             _unitOfWork.Disposing += UnitOfWorkOnDisposing;
-			//         }
+			if (_unitOfWork == null)
+			{
+				_unitOfWork = _serviceProvider.GetRequiredService<IUnitOfWork>();
+				_unitOfWork.Disposing += UnitOfWorkOnDisposing;
+			}
 
-			return _serviceProvider.GetRequiredService<IUnitOfWork>(); //_unitOfWork;
+			return _unitOfWork;
 		}
 
-		//private void UnitOfWorkOnDisposing(object sender, EventArgs e)
-		//{
-		//    if (_unitOfWork != null)
-		//    {
-		//        if (sender != _unitOfWork)
-		//        {
-		//            throw new InvalidOperationException("Sender for ending unit of work mismatched.");
-		//        }
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void UnitOfWorkOnDisposing(object sender, EventArgs e)
+		{
+			if (_unitOfWork != null)
+			{
+				if (sender != _unitOfWork)
+				{
+					throw new InvalidOperationException("Sender for ending unit of work mismatched.");
+				}
 
-		//        //_unitOfWork.Disposing -= UnitOfWorkOnDisposing;
-		//        _unitOfWork = null;
-		//    }
-		//}
+				_unitOfWork.Disposing -= UnitOfWorkOnDisposing;
+				_unitOfWork = null;
+			}
+		}
 	}
 }

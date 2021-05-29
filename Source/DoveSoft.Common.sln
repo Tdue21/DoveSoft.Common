@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoveSoft.Common", "DoveSoft.Common\DoveSoft.Common.csproj", "{0861F6F2-0835-4880-AF9E-FD7BABD6BB89}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{24D84D48-8C04-4C5A-800B-2C4B36408C45}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoveSoft.Common.Documentation", "DoveSoft.Common.Documentation.csproj", "{40816F2F-285F-4F48-B749-6D6955378D2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,14 @@ Global
 		{0861F6F2-0835-4880-AF9E-FD7BABD6BB89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0861F6F2-0835-4880-AF9E-FD7BABD6BB89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0861F6F2-0835-4880-AF9E-FD7BABD6BB89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40816F2F-285F-4F48-B749-6D6955378D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40816F2F-285F-4F48-B749-6D6955378D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{40816F2F-285F-4F48-B749-6D6955378D2A} = {24D84D48-8C04-4C5A-800B-2C4B36408C45}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2281F7A1-04E8-414C-96DA-3439D76A8ECA}

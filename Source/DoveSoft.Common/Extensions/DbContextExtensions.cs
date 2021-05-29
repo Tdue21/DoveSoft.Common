@@ -29,8 +29,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DoveSoft.Common.Extensions
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public static class DbContextExtensions
 	{
+		/// <summary>
+		/// Returns an <see cref="System.Collections.Generic.IEnumerable{T}"/> list of objects of the supplied <see cref="Microsoft.EntityFrameworkCore.EntityState"/>.
+		/// </summary>
+		/// <param name="context">The <see cref="Microsoft.EntityFrameworkCore.DbContext"/> to extract changes from.</param>
+		/// <param name="state"></param>
+		/// <returns></returns>
 		public static IEnumerable<object> Changes(this DbContext context, EntityState state)
 		{
 			if (context == null)
@@ -44,6 +53,11 @@ namespace DoveSoft.Common.Extensions
 				.Select(x => x.Entity);
 		}
 
+		/// <summary>
+		/// Saves and then detaches all entities from the <see cref="DbContext"/>.
+		/// </summary>
+		/// <param name="context">The context.</param>
+		/// <exception cref="System.ArgumentNullException">context</exception>
 		public static async Task SaveAndDetachAllEntities(this DbContext context)
 		{
 			if (context == null)

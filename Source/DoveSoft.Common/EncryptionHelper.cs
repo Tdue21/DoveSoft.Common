@@ -28,7 +28,7 @@ using System.Security.Cryptography;
 namespace DoveSoft.Common
 {
 	/// <summary>A static helper class for encrypting and decrypt text strings. </summary>
-	internal static class EncryptionHelper
+	public static class EncryptionHelper
 	{
 		/// <summary>
 		/// </summary>
@@ -55,7 +55,7 @@ namespace DoveSoft.Common
 		/// <summary>Decrypts the specified <paramref name="password"/>.</summary>
 		/// <param name="password">The password.</param>
 		/// <exception cref="ArgumentNullException">password</exception>
-		internal static string Decrypt(string password)
+		public static string Decrypt(string password)
 		{
 			if (password == null)
 			{
@@ -76,7 +76,7 @@ namespace DoveSoft.Common
 		/// <summary>Encrypts the specified <paramref name="password"/>.</summary>
 		/// <param name="password">The password.</param>
 		/// <exception cref="ArgumentNullException">password</exception>
-		internal static string Encrypt(string password)
+		public static string Encrypt(string password)
 		{
 			if (password == null)
 			{

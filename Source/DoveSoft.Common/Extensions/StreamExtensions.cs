@@ -25,11 +25,25 @@ using System.Text;
 
 namespace DoveSoft.Common.Extensions
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public static class VariousExtensionMethods
 	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns></returns>
 		public static string ToSafeString(this string input) 
 			=> $"'{input.Replace("'", "''")}'";
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="builder"></param>
+		/// <param name="length"></param>
+		/// <returns></returns>
 		public static StringBuilder AppendDivider(this StringBuilder builder, int length = 50) 
 			=> builder.AppendLine("".PadRight(length, '-'));
 	}

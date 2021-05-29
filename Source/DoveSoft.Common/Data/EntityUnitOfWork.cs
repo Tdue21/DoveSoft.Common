@@ -33,10 +33,10 @@ namespace DoveSoft.Common.Data
 	///     Entity Framework Core specific <see cref="IUnitOfWork" /> implementation.
 	/// </summary>
 	/// <seealso cref="IUnitOfWork" />
-	public class EntityUnitOfWork<TDbContext> : /*Disposable, */ IUnitOfWork where TDbContext : DbContext
+	public class EntityUnitOfWork<TDbContext> : Disposable, IUnitOfWork where TDbContext : DbContext
 	{
 		private readonly TDbContext _context;
-		//private readonly bool _ownContext;
+		private readonly bool _ownContext;
 
 		/// <summary>
 		///     Initializes a new instance of the <see cref="EntityUnitOfWork{TDbContext}" /> class.
@@ -44,7 +44,7 @@ namespace DoveSoft.Common.Data
 		public EntityUnitOfWork()
 		{
 			_context = Activator.CreateInstance<TDbContext>();
-			//_ownContext = true;
+			_ownContext = true;
 		}
 
 		/// <summary>
@@ -55,16 +55,16 @@ namespace DoveSoft.Common.Data
 		public EntityUnitOfWork(TDbContext context)
 		{
 			_context = context ?? throw new ArgumentNullException(nameof(context));
-			//_ownContext = false;
+			_ownContext = false;
 		}
 
-		// <summary>
-		// Gets a value indicating whether this instance has ended.
-		// </summary>
-		// <value>
-		// <c>true</c> if this instance has ended; otherwise, <c>false</c>.
-		// </value>
-//		public bool HasEnded { get; private set; }
+		/// <summary>
+		/// Gets a value indicating whether this instance has ended.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if this instance has ended; otherwise, <c>false</c>.
+		/// </value>
+		public bool HasEnded { get; private set; }
 
 		/// <summary>
 		///     Gets the <see cref="IRepository{TEntity}" /> repository for the type supplied.
@@ -83,10 +83,10 @@ namespace DoveSoft.Common.Data
 		/// <exception cref="ObjectDisposedException">Unit of Work has been disposed.</exception>
 		public int SaveChanges()
 		{
-			//if (HasEnded)
-			//{
-			//	throw new ObjectDisposedException("Unit of Work has been disposed.");
-			//}
+			if (HasEnded)
+			{
+				throw new ObjectDisposedException("Unit of Work has been disposed.");
+			}
 
 			if (_context == null)
 			{
@@ -108,10 +108,10 @@ namespace DoveSoft.Common.Data
 		/// <exception cref="ObjectDisposedException">Unit of Work has been disposed.</exception>
 		public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
 		{
-			//if (HasEnded)
-			//{
-			//	throw new ObjectDisposedException("Unit of Work has been disposed.");
-			//}
+			if (HasEnded)
+			{
+				throw new ObjectDisposedException("Unit of Work has been disposed.");
+			}
 
 			if (_context == null)
 			{
@@ -128,28 +128,32 @@ namespace DoveSoft.Common.Data
 		/// <summary>
 		///     Returns the current DbContext object.
 		/// </summary>
-		/// <typeparam name="TDbContext">The type of the database context.</typeparam>
 		/// <returns></returns>
 		/// <exception cref="ObjectDisposedException">Unit of Work has been disposed.</exception>
-		public TDbContext GetContext() /*!HasEnded ?*/
+		public TDbContext GetContext() 
 		{
-			return _context ?? /*:*/ throw new ObjectDisposedException("Unit of Work has been disposed.");
+			if (HasEnded)
+			{
+				throw new ObjectDisposedException("Unit of Work has been disposed.");
+			}
+
+			return _context;
 		}
 
-		// <summary>
-		// Releases unmanaged and - optionally - managed resources.
-		// </summary>
-		// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
-		//protected override void Dispose(bool disposing)
-		//{
-		//	if (!HasEnded)
-		//	{
-		//		if (disposing && _ownContext)
-		//		{
-		//			_context?.Dispose();
-		//		}
-		//		HasEnded = true;
-		//	}
-		//}
+		/// <summary>
+		/// Releases unmanaged and - optionally - managed resources.
+		/// </summary>
+		/// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (!HasEnded)
+			{
+				if (disposing && _ownContext)
+				{
+					_context?.Dispose();
+				}
+				HasEnded = true;
+			}
+		}
 	}
 }

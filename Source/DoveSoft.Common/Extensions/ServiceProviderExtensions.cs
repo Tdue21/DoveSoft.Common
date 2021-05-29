@@ -25,8 +25,18 @@ using System;
 
 namespace DoveSoft.Common.Extensions
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public static class ServiceProviderExtensions
 	{
+		/// <summary>
+		/// Gets the service.
+		/// </summary>
+		/// <typeparam name="TType">The type of the type.</typeparam>
+		/// <param name="serviceProvider">The service provider.</param>
+		/// <returns></returns>
+		/// <exception cref="System.ArgumentNullException">serviceProvider</exception>
 		public static TType GetService<TType>(this IServiceProvider serviceProvider)
 		{
 			if (serviceProvider == null)

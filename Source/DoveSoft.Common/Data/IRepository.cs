@@ -29,6 +29,9 @@ namespace DoveSoft.Common.Data
 {
 	/// <summary>
 	/// </summary>
+	/// <remarks>
+	/// Based upon blog post by Brian Bu: https://brianbu.com/2019/09/25/the-repository-pattern-isnt-an-anti-pattern-youre-just-doing-it-wrong/
+	/// </remarks>
 	/// <typeparam name="TEntity">The type of the entity.</typeparam>
 	public interface IRepository<TEntity> where TEntity : class
 	{

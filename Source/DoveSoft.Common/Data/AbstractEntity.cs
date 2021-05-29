@@ -23,24 +23,24 @@
 
 using System;
 
-// ReSharper disable VirtualMemberCallInConstructor
-
 namespace DoveSoft.Common.Data
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public abstract class AbstractEntity
 	{
 		/// <summary>Default constructor. Protected due to being abstract. </summary>
 		protected AbstractEntity()
 		{
+			// ReSharper disable VirtualMemberCallInConstructor
 			Init();
+			// ReSharper restore VirtualMemberCallInConstructor
 		}
 
 		/// <summary>Protected constructor with required data.</summary>
 		/// <param name="id">Id of entity.</param>
-		protected AbstractEntity(Guid id) : this()
-		{
-			Id = id;
-		}
+		protected AbstractEntity(Guid id) : this() => Id = id;
 
 		/// <summary>Id of entity. Identity field and required.</summary>
 		public Guid Id { get; set; }
@@ -51,8 +51,9 @@ namespace DoveSoft.Common.Data
 		/// <summary>Timestamp for last update of entity.</summary>
 		public DateTime? Updated { get; set; }
 
-		protected virtual void Init()
-		{
-		}
+		/// <summary>
+		/// Used for initiating an inheriting entity.
+		/// </summary>
+		protected virtual void Init() { }
 	}
 }
