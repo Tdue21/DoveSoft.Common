@@ -1,34 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Thomas Due</Authors>
-    <Product>DoveSoft Common Utilities</Product>
-    <Description>A small library containing commonly used classes and extension methods.</Description>
-    <Copyright>Copyright (c) 2021 by Thomas Due</Copyright>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0|AnyCPU'">
-    <DocumentationFile>..\..\Doc\DoveSoft.Common.xml</DocumentationFile>
-  </PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0|AnyCPU'">
-		<DocumentationFile>..\..\Doc\DoveSoft.Common.xml</DocumentationFile>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<Product>DoveSoft Common Utilities</Product>
+		<Description>A small library containing commonly used classes and extension methods.</Description>
+		<DocumentationFile>..\..\Doc\DoveSoft.Common\DoveSoft.Common.xml</DocumentationFile>
 	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="0.6.13">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="5.0.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.6" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Serilog" Version="2.10.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="DefaultDocumentation" Version="0.7.9">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="5.0.6" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.6" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Serilog" Version="2.10.0" />
+	</ItemGroup>
 
 </Project>

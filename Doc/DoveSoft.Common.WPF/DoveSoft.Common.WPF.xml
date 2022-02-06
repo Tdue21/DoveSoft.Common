@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DoveSoft.Common.WPF</name>
+    </assembly>
+    <members>
+        <member name="T:DoveSoft.Common.WPF.DialogService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DoveSoft.Common.WPF.DialogService.DialogStyleProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DoveSoft.Common.WPF.DialogService.DialogStartupLocationProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DoveSoft.Common.WPF.DialogService.OwnerWindowProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DoveSoft.Common.WPF.DialogService.OwnerControlProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DoveSoft.Common.WPF.DialogService.HeightProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DoveSoft.Common.WPF.DialogService.WidthProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DoveSoft.Common.WPF.DialogService.ResizableProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DoveSoft.Common.WPF.DialogService.TitleProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.DialogService.DialogStartupLocation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.DialogService.DialogStyle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.DialogService.OwnerWindow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.DialogService.OwnerControl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.DialogService.Height">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.DialogService.Width">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.DialogService.Resizable">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.DialogService.Title">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.WPF.DialogService.ShowDialog(System.Collections.Generic.IEnumerable{DevExpress.Mvvm.UICommand},System.String,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="dialogCommands"></param>
+            <param name="title"></param>
+            <param name="documentType"></param>
+            <param name="viewModel"></param>
+            <param name="parameter"></param>
+            <param name="parentViewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DoveSoft.Common.WPF.DialogServiceExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.WPF.DialogServiceExtensions.ShowDialog(DevExpress.Mvvm.IDialogService,System.Collections.Generic.IEnumerable{DevExpress.Mvvm.UICommand},System.Object,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="dialog"></param>
+            <param name="commands"></param>
+            <param name="viewModel"></param>
+            <param name="parameter"></param>
+            <param name="parentViewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoveSoft.Common.WPF.DialogServiceExtensions.ShowOkCancelDialog``1(DevExpress.Mvvm.IDialogService,``0,System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="dialog"></param>
+            <param name="viewModel"></param>
+            <param name="parameter"></param>
+            <param name="parentViewModel"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:DoveSoft.Common.WPF.DialogWindow">
+            <summary>
+                Interaction logic for DialogWindow.xaml
+            </summary>
+            <summary>
+            DialogWindow
+            </summary>
+        </member>
+        <member name="F:DoveSoft.Common.WPF.DialogWindow.CommandsSourceProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.WPF.DialogWindow.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.DialogWindow.CommandsSource">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.DialogWindow.Result">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.WPF.DialogWindow.OnDialogCommand(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DoveSoft.Common.WPF.DialogWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DoveSoft.Common.WPF.OkCancelDialogViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.OkCancelDialogViewModel.AcceptDialogCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DoveSoft.Common.WPF.OkCancelDialogViewModel.CancelDialogCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.WPF.OkCancelDialogViewModel.AcceptDialog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.WPF.OkCancelDialogViewModel.CancelDialog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DoveSoft.Common.WPF.XamlHelpers">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DoveSoft.Common.WPF.XamlHelpers.RegisterDependency``1(System.String,``0)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="defaultValue"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

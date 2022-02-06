@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<Product>DoveSoft Common WPF Utilities</Product>
+		<Description>A small library containing commonly used classes and extension methods for WPF application.</Description>
+		<DocumentationFile>..\..\Doc\DoveSoft.Common.WPF\DoveSoft.Common.WPF.xml</DocumentationFile>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DefaultDocumentation" Version="0.7.9">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="DevExpressMvvm" Version="21.1.5" />
+	</ItemGroup>
+
+</Project>

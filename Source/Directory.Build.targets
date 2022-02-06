@@ -1,0 +1,12 @@
+<Project>
+	<PropertyGroup>
+		<Deterministic>true</Deterministic>
+		<Authors>Thomas Due</Authors>
+		<Copyright>Copyright (c) 2022 by Thomas Due</Copyright>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<DefaultDocumentationAssemblyPageName>readme</DefaultDocumentationAssemblyPageName>
+		<DefaultDocumentationFileNameMode>NameAndMd5Mix</DefaultDocumentationFileNameMode>
+	</PropertyGroup>
+</Project>
